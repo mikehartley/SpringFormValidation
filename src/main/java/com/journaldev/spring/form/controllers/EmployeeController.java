@@ -23,10 +23,9 @@ import com.journaldev.spring.form.model.Employee;
 @Controller
 public class EmployeeController {
 
-	private static final Logger logger = LoggerFactory
-			.getLogger(EmployeeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(EmployeeController.class);
 
-	private Map<Integer, Employee> emps = null;
+	private Map<Integer, Employee> employees = null;
 
 	@Autowired
 	@Qualifier("employeeValidator")
@@ -38,7 +37,7 @@ public class EmployeeController {
 	}
 
 	public EmployeeController() {
-		emps = new HashMap<Integer, Employee>();
+		employees = new HashMap<Integer, Employee>();
 	}
 
 	@ModelAttribute("employee")
@@ -63,7 +62,7 @@ public class EmployeeController {
 		}
 		logger.info("Returning empSaveSuccess.jsp page");
 		model.addAttribute("emp", employee);
-		emps.put(employee.getId(), employee);
+		employees.put(employee.getId(), employee);
 		return "empSaveSuccess";
 	}
 }
