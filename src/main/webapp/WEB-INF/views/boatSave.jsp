@@ -20,6 +20,11 @@
 	<springForm:form method="POST" commandName="boat" action="save.do">
 		<table>
 			<tr>
+				<td>Reference:</td>
+				<td><springForm:input path="reference" /></td>
+				<td><springForm:errors path="reference" cssClass="error" /></td>
+			</tr>
+			<tr>
 				<td>Manufacturer:</td>
 				<td><springForm:input path="manufacturer" /></td>
 				<td><springForm:errors path="manufacturer" cssClass="error" /></td>
@@ -41,22 +46,22 @@
 			</tr>
 			<tr>
 				<td>Hull type:</td>
-				<td><springForm:select path="hull">
+				<td><springForm:select path="hullType">
 						<springForm:option value="" label="Select hull type:" />
 						<springForm:option value="MONO" label="Monohull" />
 						<springForm:option value="MULTI" label="Multihull" />
 					</springForm:select></td>
-				<td><springForm:errors path="hull" cssClass="error" /></td>
+				<td><springForm:errors path="hullType" cssClass="error" /></td>
 			</tr>
 			<tr>
 				<td>Cruising or racing?</td>
-				<td><springForm:select path="sailstyle">
+				<td><springForm:select path="sailStyle">
 						<springForm:option value="" label="Select:" />
 						<springForm:option value="CRUISING" label="Cruising" />
 						<springForm:option value="RACING" label="Racing" />
 						<springForm:option value="BOTH" label="Both" />
 					</springForm:select></td>
-				<td><springForm:errors path="sailstyle" cssClass="error" /></td>
+				<td><springForm:errors path="sailStyle" cssClass="error" /></td>
 			</tr>
 			<tr>
 				<td>Describe what you are looking for:</td>

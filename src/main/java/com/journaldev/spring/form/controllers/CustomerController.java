@@ -18,8 +18,7 @@ import com.journaldev.spring.form.model.Customer;
 @Controller
 public class CustomerController {
 
-	private static final Logger logger = LoggerFactory
-			.getLogger(CustomerController.class);
+	private static final Logger logger = LoggerFactory.getLogger(CustomerController.class);
 	
 	private Map<String, Customer> customers = null;
 	

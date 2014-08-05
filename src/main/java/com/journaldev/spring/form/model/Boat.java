@@ -1,40 +1,17 @@
 package com.journaldev.spring.form.model;
 
-import com.journaldev.spring.form.validator.Phone;
-import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.validation.constraints.*;
-import java.util.Calendar;
-import java.util.Date;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 public class Boat {
-/*
-			<tr>
-				<td>Hull type:</td>
-				<td><springForm:select path="hull">
-						<springForm:option value="" label="Select hull type:" />
-						<springForm:option value="MONO" label="Monohull" />
-						<springForm:option value="MULTI" label="Multihull" />
-					</springForm:select></td>
-				<td><springForm:errors path="hull" cssClass="error" /></td>
-			</tr>
-			<tr>
-				<td>Cruising or racing?</td>
-				<td><springForm:select path="sailstyle">
-						<springForm:option value="" label="Select:" />
-						<springForm:option value="CRUISING" label="Cruising" />
-						<springForm:option value="RACING" label="Racing" />
-						<springForm:option value="BOTH" label="Both" />
-					</springForm:select></td>
-				<td><springForm:errors path="sailstyle" cssClass="error" /></td>
-			</tr>
-			<tr>
-				<td>Describe what you are looking for:</td>
-				<td><springForm:input path="desc"/></td>
-				<td><springForm:errors path="desc" cssClass="error" /></td>
-			</tr>*/
+
+    @Size(min=5, max=10, message = "must be between 5 and 10 characters long")
+    private String reference;
+
 	@Size(min=1, max=30)
     private String manufacturer;
 
@@ -43,12 +20,6 @@ public class Boat {
 
     @NotNull @Min(1850) @Max(2014) //TODO make max dynamic
     private Integer year;
-
-    @NotEmpty @Email
-    private String email;
-     
-    @NotNull @Min(18) @Max(100)
-    private Integer age;
 
     @NotNull @Min(3) @Max(999)
     private Integer length; //TODO units
@@ -65,65 +36,73 @@ public class Boat {
     }
 
     @NotNull
-    private Gender gender;
-     
-    @DateTimeFormat(pattern="MM/dd/yyyy")
-    @NotNull @Past
-    private Date birthday;
-    
-    @Phone
-    private String phone;
-    
-    public enum Gender {
-		MALE, FEMALE
-	}
+    private SailStyle sailStyle;
 
-	public String getName() {
-		return name;
-	}
+    @NotEmpty
+    private String desc;
 
-	public void setName(String name) {
-		this.name = name;
-	}
 
-	public String getEmail() {
-		return email;
-	}
+    public String getReference() {
+        return reference;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
 
-	public Integer getAge() {
-		return age;
-	}
+    public String getManufacturer() {
+        return manufacturer;
+    }
 
-	public void setAge(Integer age) {
-		this.age = age;
-	}
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
 
-	public Gender getGender() {
-		return gender;
-	}
+    public String getModel() {
+        return model;
+    }
 
-	public void setGender(Gender gender) {
-		this.gender = gender;
-	}
+    public void setModel(String model) {
+        this.model = model;
+    }
 
-	public Date getBirthday() {
-		return birthday;
-	}
+    public Integer getYear() {
+        return year;
+    }
 
-	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
-	}
+    public void setYear(Integer year) {
+        this.year = year;
+    }
 
-	public String getPhone() {
-		return phone;
-	}
+    public Integer getLength() {
+        return length;
+    }
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-	
+    public void setLength(Integer length) {
+        this.length = length;
+    }
+
+    public HullType getHullType() {
+        return hullType;
+    }
+
+    public void setHullType(HullType hullType) {
+        this.hullType = hullType;
+    }
+
+    public SailStyle getSailStyle() {
+        return sailStyle;
+    }
+
+    public void setSailStyle(SailStyle sailStyle) {
+        this.sailStyle = sailStyle;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
 }
