@@ -1,11 +1,13 @@
 package com.journaldev.spring.form.model;
 
+import com.journaldev.spring.form.validator.Year;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Calendar;
 
 public class Boat {
 
@@ -18,7 +20,7 @@ public class Boat {
     @Size(min=1, max=30)
     private String model;
 
-    @NotNull @Min(1850) @Max(2014) //TODO make max dynamic
+    @Year(message = "year is invalid")
     private Integer year;
 
     @NotNull @Min(3) @Max(999)

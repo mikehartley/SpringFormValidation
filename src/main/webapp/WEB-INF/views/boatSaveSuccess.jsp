@@ -3,16 +3,23 @@
 
 <%@ page session="false" %>
 <html>
-<head>
-	<title>YOTTR :: Boat Saved Successfully</title>
-</head>
-<body>
-<h3>
-	Boat Saved Successfully.
-</h3>
+    <head>
+        <title>YOTTR :: Boat Saved Successfully</title>
+    </head>
+    <body>
+        <h3>
+            Boat Saved Successfully.
+        </h3>
 
-<strong>Reference:${boat.reference}</strong><br>
-<strong>Manufacturer:${boat.manufacturer}</strong><br>
-<strong>Model:${boat.model}</strong><br>
-</body>
+        <strong>Reference: </strong>${boat.reference}<br>
+        <strong>Manufacturer: </strong>${boat.manufacturer}<br>
+        <strong>Model: </strong>${boat.model}<br>
+        <strong>Year of build: </strong>${boat.year}<br>
+        <strong>Length: </strong>${boat.length}<br>
+        <strong>Hull type: </strong>${boat.hullType}<br>
+        <strong>Type of sailing: </strong>${boat.sailStyle}<br>
+        <hr>
+        <strong>Description</strong><br>
+        ${boat.desc}
+    </body>
 </html>

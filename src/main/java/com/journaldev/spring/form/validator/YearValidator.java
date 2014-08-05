@@ -2,28 +2,25 @@ package com.journaldev.spring.form.validator;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import java.util.Calendar;
 
-public class YearValidator implements ConstraintValidator<Phone, String> {
+public class YearValidator implements ConstraintValidator<Year, Integer> {
 
-	@Override
-	public void initialize(Phone paramA) {
+    public static final int EARLIEST_EXPECTED_YEAR = 1850;
+
+    @Override
+	public void initialize(Year paramA) {
 	}
 
 	@Override
-	public boolean isValid(String phoneNo, ConstraintValidatorContext ctx) {
-		if(phoneNo == null){
+	public boolean isValid(Integer year, ConstraintValidatorContext ctx) {
+		if(year == null){
 			return false;
 		}
-		//validate phone numbers of format "1234567890"
-        if (phoneNo.matches("\\d{10}")) return true;
-        //validating phone number with -, . or spaces
-        else if(phoneNo.matches("\\d{3}[-\\.\\s]\\d{3}[-\\.\\s]\\d{4}")) return true;
-        //validating phone number with extension length from 3 to 5
-        else if(phoneNo.matches("\\d{3}-\\d{3}-\\d{4}\\s(x|(ext))\\d{3,5}")) return true;
-        //validating phone number where area code is in braces ()
-        else if(phoneNo.matches("\\(\\d{3}\\)-\\d{3}-\\d{4}")) return true;
-        //return false if nothing matches the input
-        else return false;
+
+        final int nextYear = Calendar.getInstance().get(Calendar.YEAR) + 1;
+
+        return year >= EARLIEST_EXPECTED_YEAR && year <= nextYear;
 	}
 
 }
