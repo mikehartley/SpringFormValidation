@@ -9,20 +9,21 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class BoatController {
 
 	private static final Logger logger = LoggerFactory.getLogger(BoatController.class);
 
-	private Map<String, Boat> boats = null;
+	private Collection<Boat> boats = null;
 
 	public BoatController(){
-		boats = new HashMap<String, Boat>();
+		boats = new ArrayList<Boat>();
+        boats.addAll(dummyData());
 	}
 
 	@RequestMapping(value = "/boat/save", method = RequestMethod.GET)
@@ -41,8 +42,40 @@ public class BoatController {
 		}
 		logger.info("Returning boatSaveSuccess.jsp page");
 		model.addAttribute("boat", boat);
-		boats.put(boat.getReference(), boat);
+		boats.add(boat);
 		return "boatSaveSuccess";
 	}
+
+    @RequestMapping(value = "/boat/list", method = RequestMethod.GET)
+    public ModelAndView listBoats() {
+        logger.info("Boat list page");
+
+        ModelAndView model = new ModelAndView("boatList");
+        model.addObject("boats", boats);
+
+        return model;
+    }
+
+    private Collection<Boat> dummyData() {
+        List<Boat> dummyList = new ArrayList<>();
+
+        dummyList.add(createBoat("Y0001", "Halberg Rassy", "HR42", 42, Boat.HullType.MONO, "Looking for some crew to do some sailing."));
+        dummyList.add(createBoat("Y0002", "Jaguar", "SeaCat", 55, Boat.HullType.MULTI, "I just like to motor about then have some lunch."));
+
+        return dummyList;
+    }
+
+    private Boat createBoat(String reference, String manufacturer, String model, int length,
+                            Boat.HullType hullType, String description) {
+        Boat boat = new Boat();
+        boat.setReference(reference);
+        boat.setManufacturer(manufacturer);
+        boat.setModel(model);
+        boat.setLength(length);
+        boat.setHullType(hullType);
+        boat.setDesc(description);
+        return boat;
+    }
+
 
 }

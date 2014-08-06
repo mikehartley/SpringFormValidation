@@ -20,9 +20,6 @@ public class Boat {
     @Size(min=1, max=30)
     private String model;
 
-    @Year(message = "year is invalid")
-    private Integer year;
-
     @NotNull @Min(3) @Max(999)
     private Integer length; //TODO units
 
@@ -32,13 +29,6 @@ public class Boat {
 
     @NotNull
     private HullType hullType;
-
-    public enum SailStyle {
-        CRUISING, RACING, BOTH //TODO delivery, professional, other - is an enum suitable here?
-    }
-
-    @NotNull
-    private SailStyle sailStyle;
 
     @NotEmpty
     private String desc;
@@ -68,14 +58,6 @@ public class Boat {
         this.model = model;
     }
 
-    public Integer getYear() {
-        return year;
-    }
-
-    public void setYear(Integer year) {
-        this.year = year;
-    }
-
     public Integer getLength() {
         return length;
     }
@@ -90,14 +72,6 @@ public class Boat {
 
     public void setHullType(HullType hullType) {
         this.hullType = hullType;
-    }
-
-    public SailStyle getSailStyle() {
-        return sailStyle;
-    }
-
-    public void setSailStyle(SailStyle sailStyle) {
-        this.sailStyle = sailStyle;
     }
 
     public String getDesc() {

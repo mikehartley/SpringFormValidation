@@ -35,11 +35,6 @@
 				<td><springForm:errors path="model" cssClass="error" /></td>
 			</tr>
 			<tr>
-				<td>Year:</td>
-				<td><springForm:input path="year" /></td>
-				<td><springForm:errors path="year" cssClass="error" /></td>
-			</tr>
-			<tr>
 				<td>Length:</td>
 				<td><springForm:input path="length" /></td>
 				<td><springForm:errors path="length" cssClass="error" /></td>
@@ -52,16 +47,6 @@
 						<springForm:option value="MULTI" label="Multihull" />
 					</springForm:select></td>
 				<td><springForm:errors path="hullType" cssClass="error" /></td>
-			</tr>
-			<tr>
-				<td>Cruising or racing?</td>
-				<td><springForm:select path="sailStyle">
-						<springForm:option value="" label="Select:" />
-						<springForm:option value="CRUISING" label="Cruising" />
-						<springForm:option value="RACING" label="Racing" />
-						<springForm:option value="BOTH" label="Both" />
-					</springForm:select></td>
-				<td><springForm:errors path="sailStyle" cssClass="error" /></td>
 			</tr>
 			<tr>
 				<td>Describe what you are looking for:</td>

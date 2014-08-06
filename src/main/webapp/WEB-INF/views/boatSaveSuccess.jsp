@@ -14,12 +14,14 @@
         <strong>Reference: </strong>${boat.reference}<br>
         <strong>Manufacturer: </strong>${boat.manufacturer}<br>
         <strong>Model: </strong>${boat.model}<br>
-        <strong>Year of build: </strong>${boat.year}<br>
         <strong>Length: </strong>${boat.length}<br>
         <strong>Hull type: </strong>${boat.hullType}<br>
-        <strong>Type of sailing: </strong>${boat.sailStyle}<br>
         <hr>
         <strong>Description</strong><br>
-        ${boat.desc}
+        ${boat.desc}<br>
+        <hr>
+        <br>
+
+        <a href='list'>All boats</a>
     </body>
 </html>
