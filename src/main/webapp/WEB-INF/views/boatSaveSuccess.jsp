@@ -22,6 +22,6 @@
         <hr>
         <br>
 
-        <a href='list'>All boats</a>
+        <a href='list.htm'>All boats</a>
     </body>
 </html>

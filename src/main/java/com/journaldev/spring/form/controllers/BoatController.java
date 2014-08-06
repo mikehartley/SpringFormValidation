@@ -33,7 +33,7 @@ public class BoatController {
 		return "boatSave";
 	}
 
-	@RequestMapping(value = "/boat/save.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/boat/save", method = RequestMethod.POST)
 	public String saveBoatAction(@Valid Boat boat, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
             logger.info(bindingResult.toString());
@@ -54,6 +54,12 @@ public class BoatController {
         model.addObject("boats", boats);
 
         return model;
+    }
+
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public String index() {
+        logger.info("START : index page");
+        return "index";
     }
 
     private Collection<Boat> dummyData() {
