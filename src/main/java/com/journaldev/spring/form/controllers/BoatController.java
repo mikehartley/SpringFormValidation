@@ -26,29 +26,29 @@ public class BoatController {
         boats.addAll(dummyData());
 	}
 
-	@RequestMapping(value = "/boat/save", method = RequestMethod.GET)
-	public String saveBoatPage(Model model) {
-		logger.info("Returning boatSave.jsp page from saveBoatPage");
+	@RequestMapping(value = "/listings/new", method = RequestMethod.GET)
+	public String newListingPage(Model model) {
+		logger.info("Returning newListing.jsp page from newListingPage");
 		model.addAttribute("boat", new Boat());
-		return "boatSave";
+		return "newListing";
 	}
 
-	@RequestMapping(value = "/boat/save", method = RequestMethod.POST)
-	public String saveBoatAction(@Valid Boat boat, BindingResult bindingResult, Model model) {
+	@RequestMapping(value = "/listings/new", method = RequestMethod.POST)
+	public String newListingAction(@Valid Boat boat, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
             logger.info(bindingResult.toString());
-			logger.info("Returning boatSave.jsp page from saveBoatAction");
-			return "boatSave";
+			logger.info("Returning newListing.jsp page from saveBoatAction");
+			return "newListing";
 		}
-		logger.info("Returning boatSaveSuccess.jsp page");
+		logger.info("Returning newListingSuccess.jsp page");
 		model.addAttribute("boat", boat);
 		boats.add(boat);
-		return "boatSaveSuccess";
+		return "newListingSuccess";
 	}
 
-    @RequestMapping(value = "/boat/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/listings/all", method = RequestMethod.GET)
     public ModelAndView listBoats() {
-        logger.info("Boat list page");
+        logger.info("All listings page");
 
         ModelAndView model = new ModelAndView("boatList");
         model.addObject("boats", boats);

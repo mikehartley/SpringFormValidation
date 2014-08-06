@@ -17,7 +17,7 @@
 
     <h2>Enter boat details:</h2>
 
-	<springForm:form method="POST" commandName="boat" action="save.do">
+	<springForm:form method="POST" commandName="boat" action="new.htm">
 		<table>
 			<tr>
 				<td>Reference:</td>
