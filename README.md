@@ -8,4 +8,5 @@ mvn clean install
 
 cp war in target to tomcat webappps
 
-goto: http://localhost:8080/SpringFormValidation/
+goto: 
+http://localhost:8080/SpringFormValidation/
